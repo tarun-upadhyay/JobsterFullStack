@@ -48,7 +48,7 @@ const port = process.env.PORT || 8080;
 
 const start = async () => {
   try {
-    await connectDB("mongodb://localhost:27017/jobs");
+    await connectDB(process.env.MONGO_URI);
     app.listen(port, () => {
       console.log(`Server is Listening on port ${port}...`);
     });
