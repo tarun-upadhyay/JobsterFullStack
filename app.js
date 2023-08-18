@@ -19,7 +19,7 @@ const connectDB = require("./db/connect");
 const authRouter = require("./Routes/auth");
 const jobsRouter = require("./Routes/jobs");
 const authenticateUser = require("./middleware/authentication");
-const Job = require("./Models/Job");
+
 
 //for api rate limiter
 app.set('trust proxy', 1)
@@ -57,15 +57,3 @@ const start = async () => {
   }
 };
 start();
-async function populateDB() {
-  const mockData = require("./mock-data.json");
-  try {
-    await Job.create(mockData);
-    console.log(('Success !!!'))
-    process.exit(0)
-  } catch (error) {
-
-    console.log(error)
-    process.exit(1)
-  }
-}
